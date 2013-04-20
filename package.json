@@ -39,6 +39,6 @@
     "mocha": "~1.9.0",
     "should": "~1.2.2"
   },
-  "keywords": ["logging", "config", "winston", "json"]
+  "keywords": ["logging", "config", "winston", "json", "log"]
 
 }
