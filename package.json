@@ -1,0 +1,44 @@
+{
+  "name": "winston-config",
+  "description": "A helper to easily configure winston",
+  "version": "0.0.1",
+  "homepage": "https://github.com/triplem/winston-config",
+  "author": {
+    "name": "Markus M. May",
+    "email": "mmay@javafreedom.org",
+    "url": "http://www.javafreedom.org"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/triplem/winston-config.git"
+  },
+  "bugs": {
+    "url": "https://github.com/triplem/winston-config/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/triplem/winston-config/blob/master/LICENSE-MIT"
+    }
+  ],
+  "main": "lib/winston-config",
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "scripts": {
+    "test": "grunt travis"
+  },
+  "dependencies": {
+    "winston": "~0.6.2"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-jshint": "~0.2",
+    "grunt-contrib-watch": "~0.3.1",
+    "grunt-mocha-hack": "~0.0.4",
+    "mocha": "~1.9.0",
+    "should": "~1.2.2"
+  },
+  "keywords": ["logging", "config", "winston", "json"]
+
+}

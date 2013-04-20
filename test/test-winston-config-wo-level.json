@@ -1,0 +1,9 @@
+{
+  "logging": {
+    "application": {
+      "console": {
+        "colorize": true
+      }
+    }
+  }
+}
