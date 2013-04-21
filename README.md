@@ -13,9 +13,9 @@ winston-config.
 
 ``` js
   var winston = require('winston')
-    , winston-config = require('winston-config');
+    , winstonConf = require('winston-config');
 
-  winston-config.winstonConfigFromFile(__dirname + '/../config/example-winston-config.json');
+  winstonConf.winstonConfigFromFile(__dirname + '/../config/example-winston-config.json');
 ```
 
 Right now, winston-config offers two methods, one is `winstonConfigFromFile` (calling a json-file and using it for the
