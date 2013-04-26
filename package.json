@@ -1,7 +1,7 @@
 {
   "name": "winston-config",
   "description": "A helper to easily configure winston",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "homepage": "https://github.com/triplem/winston-config",
   "author": {
     "name": "Markus M. May",
@@ -29,7 +29,8 @@
     "test": "grunt travis"
   },
   "dependencies": {
-    "winston": "~0.6.2"
+    "winston": "~0.6.2",
+    "lodash": "~1.2.0"
   },
   "devDependencies": {
     "grunt": "~0.4.1",

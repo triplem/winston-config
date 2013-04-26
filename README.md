@@ -7,6 +7,8 @@ Winston is designed to be a simple and universal logging library with support fo
 There is IMHO a need to easily configure this fine logging library via easy json files, without the need of working with
 the winston api.
 
+winston-config offers configuration of multiple winston loggers via json files.
+
 ## Usage
 You do have to put the `winston` dependency into your package.json. After this you are able to configure winston via
 winston-config.
@@ -15,12 +17,20 @@ winston-config.
   var winston = require('winston')
     , winstonConf = require('winston-config');
 
-  winstonConf.winstonConfigFromFile(__dirname + '/../config/example-winston-config.json');
+  winstonConf.configFromFile(__dirname + '/../config/example-winston-config.json', callback(error, winston) {
+    if (error) {
+      console.log('error during winston configuration');
+    } else {
+      console.log('everything alright');
+    }
+  });
 ```
 
-Right now, winston-config offers two methods, one is `winstonConfigFromFile` (calling a json-file and using it for the
-configuration of winston) the other one is `winstonConfig`. This method accepts a JS Object to configure winston (well
-in reality this method is called by the `winstonConfigFromFile` and does nothing else then adding the config to winston).
+Right now, winston-config offers two methods, one is `configFromFile` (calling a json-file and using it for the
+configuration of winston) the other one is `configWithNames`. This method accepts a JS Object to configure winston (well
+in reality this method is called by the `configFromFile` and does nothing else then adding the config to winston).
+
+If you do have
 
 It is very important to use the `__dirname + '/' (note the '/'), otherwise the configuration file will not be found.
 A configuration file can look like (see directory config or test):
@@ -67,7 +77,13 @@ winston-config with a correct filename (using the above configuration), the logg
 var winston = require('winston');
 
 var appLogger = winston.loggers.get('application');
+var httpLogger = winston.loggers.get('http');
+
+// this will appear in the console as well as the logs/app.log file
 appLogger.info('LOGMESSAGE');
+
+// this will not appear in the console, but in the logs/http.log file
+httpLogger.info('ANOTHER LOGMESSAGE');
 ```
 
 Like already stated, the name `application` can be configured. If there is no configuration for this logger, the default
