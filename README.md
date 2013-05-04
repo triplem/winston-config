@@ -28,7 +28,7 @@ winston-config.
 ```
 
 Right now, winston-config offers two methods, one is `fromFile` (calling a json-file and using it for the
-configuration of winston) the other one is `withNames`. This method accepts a JS Object to configure winston (well
+configuration of winston) the other one is `fromJson`. This method accepts a JS Object to configure winston (well
 in reality this method is called by the `fromFile` and does nothing else then adding the config to winston).
 
 If you do have the requirement to just use a single logger, you could use [build-winston](http://github.com/flexbean/build-winston).
