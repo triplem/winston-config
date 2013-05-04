@@ -1,7 +1,7 @@
 {
   "name": "winston-config",
   "description": "A helper to easily configure winston",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "homepage": "https://github.com/triplem/winston-config",
   "author": {
     "name": "Markus M. May",

@@ -8,7 +8,7 @@ describe('winston-config', function () {
 
   it('should read config from given file', function () {
 
-    require('../lib/winston-config').configFromFile(path.join(__dirname, '../config/example-winston-config.json'), function (error, winston) {
+    require('../lib/winston-config').fromFile(path.join(__dirname, '../config/example-winston-config.json'), function (error, winston) {
       should.exist(winston.loggers.get('application'));
 
       winston.loggers.get('application').transports['console'].level.should.equal('info');
@@ -35,7 +35,7 @@ describe('winston-config', function () {
   it('throws an error if an incorrect path is given', function () {
     var winston = require('winston');
 
-    require('../lib/winston-config').configFromFile('./test.js', function (error) {
+    require('../lib/winston-config').fromFile('./test.js', function (error) {
       should.exist(error);
     });
 
@@ -45,7 +45,7 @@ describe('winston-config', function () {
 
   it('returns a default logging level for console (winston default - info) for the not configured logging level', function () {
 
-    require('../lib/winston-config').configFromFile(__dirname + '/./test-winston-config-wo-level.json', function (error, winston) {
+    require('../lib/winston-config').fromFile(__dirname + '/./test-winston-config-wo-level.json', function (error, winston) {
       should.exist(winston.loggers.get('application'));
 
       winston.loggers.get('application').transports['console'].level.should.equal('info');

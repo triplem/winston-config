@@ -14,10 +14,11 @@ You do have to put the `winston` dependency into your package.json. After this y
 winston-config.
 
 ``` js
-  var winston = require('winston')
+  var path = require('path')
+    , winston = require('winston')
     , winstonConf = require('winston-config');
 
-  winstonConf.configFromFile(__dirname + '/../config/example-winston-config.json', callback(error, winston) {
+  winstonConf.fromFile(path.join(__dirname, '../config/example-winston-config.json'), callback(error, winston) {
     if (error) {
       console.log('error during winston configuration');
     } else {
@@ -26,13 +27,13 @@ winston-config.
   });
 ```
 
-Right now, winston-config offers two methods, one is `configFromFile` (calling a json-file and using it for the
-configuration of winston) the other one is `configWithNames`. This method accepts a JS Object to configure winston (well
-in reality this method is called by the `configFromFile` and does nothing else then adding the config to winston).
+Right now, winston-config offers two methods, one is `fromFile` (calling a json-file and using it for the
+configuration of winston) the other one is `withNames`. This method accepts a JS Object to configure winston (well
+in reality this method is called by the `fromFile` and does nothing else then adding the config to winston).
 
-If you do have
+If you do have the requirement to just use a single logger, you could use [build-winston](http://github.com/flexbean/build-winston).
+We are right now in discussions to merge these two projects.
 
-It is very important to use the `__dirname + '/' (note the '/'), otherwise the configuration file will not be found.
 A configuration file can look like (see directory config or test):
 
 ``` js
