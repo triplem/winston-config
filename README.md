@@ -31,6 +31,10 @@ Right now, winston-config offers two methods, one is `fromFile` (calling a json-
 configuration of winston) the other one is `fromJson`. This method accepts a JS Object to configure winston (well
 in reality this method is called by the `fromFile` and does nothing else then adding the config to winston).
 
+With 0.3.2 another method fromFileSync was added to add the ability to use the winston-config during initialization phases of
+an application. This method just logs errors via console.log and furthermore returns also a valid winston config (if it is
+a configured instance, it is the configured one, otherwise it is the initial one offered from winston itself).
+
 If you do have the requirement to just use a single logger, you could use [build-winston](http://github.com/flexbean/build-winston).
 We are right now in discussions to merge these two projects.
 
