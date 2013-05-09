@@ -1,4 +1,4 @@
-# winston-config [![Build Status](https://travis-ci.org/triplem/winston-config.png?branch=master)](http://travis-ci.org/triplem/winston-config) [![Dependency Status](https://gemnasium.com/triplem/winston-config.png)](https://gemnasium.com/triplem/winston-config) [![NPM version](https://badge.fury.io/js/winston-config.png)](http://badge.fury.io/js/winston-config)
+# winston-config [![Build Status](https://travis-ci.org/triplem/winston-config.png?branch=master)](http://travis-ci.org/triplem/winston-config) [![Dependency Status](https://gemnasium.com/triplem/winston-config.png)](https://gemnasium.com/triplem/winston-config) [![NPM version](https://badge.fury.io/js/winston-config.png)](http://badge.fury.io/js/winston-config) [![Coverage Status](https://coveralls.io/repos/triplem/winston-config/badge.png)](https://coveralls.io/r/triplem/winston-config)
 
 A module to easily configure [winston](http://github.com/flatiron/winston) via json files.
 
