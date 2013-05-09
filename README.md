@@ -10,12 +10,18 @@ the winston api.
 winston-config offers configuration of multiple winston loggers via json files.
 
 ## Usage
-You do have to put the `winston` dependency into your package.json. After this you are able to configure winston via
-winston-config.
+You do have to put the `winston` dependency into your package.json. winston-config will not work correctly without this dependency
+in your package.json. This is due to the [module caching caveats](http://nodejs.org/api/modules.html#modules_module_caching_caveats)
+of the nodejs module loading. winston-config does not install a dependency to winston, so that your application is using
+the same "module" as the winston-config (see also [Modules Loading from Node Modules folders](http://nodejs.org/api/modules.html#modules_loading_from_node_modules_folders)).
+Otherwise the winston module would be another file and therefor it would not be the cached one used by node and therefor the
+configuration could not be as easily used in your application. (Unfortunately this is quite hard to test in the test cases
+and therefor no test for this is in the test-cases).
+
+winston-config can be used like described below:
 
 ``` js
   var path = require('path')
-    , winston = require('winston')
     , winstonConf = require('winston-config');
 
   winstonConf.fromFile(path.join(__dirname, '../config/example-winston-config.json'), callback(error, winston) {
@@ -27,18 +33,25 @@ winston-config.
   });
 ```
 
-Right now, winston-config offers two methods, one is `fromFile` (calling a json-file and using it for the
-configuration of winston) the other one is `fromJson`. This method accepts a JS Object to configure winston (well
-in reality this method is called by the `fromFile` and does nothing else then adding the config to winston).
+Right now, winston-config offers the following methods:
 
-With 0.3.2 another method fromFileSync was added to add the ability to use the winston-config during initialization phases of
-an application. This method just logs errors via console.log and furthermore returns also a valid winston config (if it is
-a configured instance, it is the configured one, otherwise it is the initial one offered from winston itself).
+* `fromFile`
+calling a json-file and using it for the configuration of winston. This is an async method.
+
+* `fromJson`
+accepts a JS Object to configure winston (well in reality this method is called by the `fromFile` and does nothing else
+then adding the config to winston). This method is an async method.
+
+* `fromFileSync'
+does pretty much the same as the fromFile method, but does this synchronously. This is especially useful for the
+initialization phase of an application. This method just logs errors via console.log and furthermore returns always
+a valid winston config. The returned winston object is configured with the given file if everything went without errors,
+otherwise a fresh winston is returned.
 
 If you do have the requirement to just use a single logger, you could use [build-winston](http://github.com/flexbean/build-winston).
 We are right now in discussions to merge these two projects.
 
-A configuration file can look like (see directory config or test):
+A configuration file should look like (see directory config or test):
 
 ``` js
 {
@@ -99,6 +112,9 @@ Detailed information can be found in the tests for this project.
 
 Hope it helps, and you are able to use it. If there are any problems, do not hesitate to open an issue or write a message
 to the author of this project.
+
+An application using this configuration is [Agora](https://github.com/softwerkskammer/NeuePlattform-Implementierung) from
+the Softwerkskammer Germany.
 
 ## LICENSE
 

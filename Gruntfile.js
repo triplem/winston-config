@@ -11,6 +11,7 @@ module.exports = function (grunt) {
       '<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +
       '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
       ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */\n',
+
     // Task configuration.
     jshint: {
       files: ['**/*.js*', '.jshintrc', '!node_modules/**/*.js*'],
@@ -32,6 +33,38 @@ module.exports = function (grunt) {
       },
 
       all: { src: ['test/**/*.js']}
+    },
+    mochacov: {
+      coverage: {
+        options: {
+          ui: 'bdd',
+          reporter: 'html-cov',
+          output: 'docs/generated/coverage.html'
+        }
+      },
+      travis: {
+        options: {
+          coveralls: {
+            serviceName: 'travis-ci'
+          }
+        }
+      },
+      options: {
+        globals: ['should'],
+        timeout: 3000,
+        ignoreLeaks: false
+      },
+      all: ['test/*.js']
+    },
+    exec: {
+      mkGenDocsDir: {
+        command: 'mkdir -p docs/generated'
+      }
+    },
+    clean: {
+      tests: {
+        src: ["docs"]
+      }
     }
 
   });
@@ -39,11 +72,17 @@ module.exports = function (grunt) {
   // These plugins provide necessary tasks.
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-mocha-hack');
+  grunt.loadNpmTasks('grunt-mocha-cov');
+  grunt.loadNpmTasks('grunt-exec');
 
   // Default task.
   grunt.registerTask('default', ['jshint', 'mocha-hack']);
 
+  // Coverage tasks
+  grunt.registerTask('coverage', ['clean', 'exec:mkGenDocsDir', 'mochacov:coverage']);
+
   // Travis-CI task
-  grunt.registerTask('travis', ['default']);
+  grunt.registerTask('travis', ['default', 'mochacov:travis']);
 };

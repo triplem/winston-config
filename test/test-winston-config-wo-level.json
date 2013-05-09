@@ -1,8 +1,9 @@
 {
   "logging": {
-    "application": {
+    "testing": {
       "console": {
-        "colorize": true
+        "colorize": true,
+        "timestamp": true
       }
     }
   }
