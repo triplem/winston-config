@@ -91,6 +91,48 @@ describe('winston-config', function () {
     });
   });
 
+  it('should work for every transport in given config (e.g. winston-email and winston-mongodb)', function () {
+
+    require('winston-email');
+    // this is the correct initialization for this logger, please not the correct usage of
+    // "mongoDB" in the transports (JSON file) as well
+    require('winston-mongodb').MongoDB;
+
+    var logging = {
+      "application": {
+        "email": {
+          "to": "test@testmail.com",
+          "from": "test@error.com",
+          "auth": { user: "test", pass: "test" },
+          "level": "error"
+        }
+      },
+      "dblog": {
+        "mongoDB": {
+          "level": "warn",
+          "silent": "true",
+          "collection": "log",
+          "host": "localhost",
+          "db": "dummydb"
+        }
+      }
+    };
+
+    require('../lib/winston-config').fromJson(logging, function (error, winston) {
+      assert(!error);
+      should.exist(winston.loggers.get('application'));
+
+      winston.loggers.get('application').transports['email'].level.should.equal('error');
+
+      should.exist(winston.loggers.get('dblog'));
+      // note the all lower case logger name
+      winston.loggers.get('dblog').transports['mongodb'].level.should.equal('warn');
+
+      // reset all loggers
+      winston.loggers = new winston.Container();
+    });
+  });
+
   it('should return error and initial winston if empty json object is injected', function () {
     var logging;
 
