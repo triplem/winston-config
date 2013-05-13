@@ -1,7 +1,7 @@
 {
   "name": "winston-config",
   "description": "A helper to easily configure winston",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "homepage": "https://github.com/triplem/winston-config",
   "author": {
     "name": "Markus M. May",
@@ -32,7 +32,7 @@
       "onlyCwd": true,
       "data-cover-flags": { "branchTracking": true }
     },
-    "travis-cov": { "threshold": 67 }
+    "travis-cov": { "threshold": 99 }
   },
   "dependencies": {
     "lodash": "~1.2.0"
@@ -40,7 +40,7 @@
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-contrib-jshint": "~0.4.3",
-    "grunt-contrib-watch": "~0.3.1",
+    "grunt-contrib-watch": "~0.4.3",
     "grunt-mocha-hack": "~0.1.0",
     "grunt-exec": "~0.4.0",
     "grunt-contrib-clean": "~0.4",
