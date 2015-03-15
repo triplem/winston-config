@@ -11,7 +11,7 @@
   "boss": true,
   "eqnull": true,
   "node": true,
-  "es5": true,
+  "es5": false,
   "strict": true,
   "indent": 2,
   "white": true,
