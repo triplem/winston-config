@@ -112,8 +112,7 @@ describe('winston-config', function () {
           "level": "warn",
           "silent": "true",
           "collection": "log",
-          "host": "localhost",
-          "db": "dummydb"
+          "db": "mongodb://localhost/winston/dummydb"
         }
       }
     };
