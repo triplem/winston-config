@@ -28,32 +28,39 @@
   "scripts": {
     "test": "grunt travis",
     "blanket": {
-      "pattern": "//^((?!\/node_modules\/)(?!\/test\/).)*$/ig",
+      "pattern": "//^((?!/node_modules/)(?!/test/).)*$/ig",
       "onlyCwd": true,
-      "data-cover-flags": { "branchTracking": true }
+      "data-cover-flags": {
+        "branchTracking": true
+      }
     },
-    "travis-cov": { "threshold": 99 }
+    "travis-cov": {
+      "threshold": 99
+    }
   },
   "dependencies": {
-    "lodash": "~3.5.0"
+    "lodash.isempty": "^4.2.1"
   },
   "devDependencies": {
-    "grunt": "~0.4.5",
-    "grunt-contrib-jshint": "~0.11.0",
-    "grunt-contrib-watch": "~0.6.1",
-    "grunt-mocha-hack": "~0.1.0",
-    "grunt-exec": "~0.4.0",
-    "grunt-contrib-clean": "~0.4",
-    "grunt-mocha-cov": "~0.3.0",
-    "mocha": "~2.2.1",
-    "mocha-lcov-reporter": "~0.0.1",
-    "should": "~5.2.0",
+    "blanket": "^1.2.3",
+    "grunt": "^1.0.1",
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-jshint": "^1.0.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-mocha-cov": "^0.4.0",
+    "mocha": "^2.4.5",
+    "mocha-lcov-reporter": "^1.2.0",
+    "should": "^8.3.1",
     "travis-cov": "~0.2.4",
-    "blanket": "~1.1.4",
-    "winston": "~0.9.0",
-    "winston-email": "~0.0.8",
-    "winston-mongodb": "~1.0.1"
+    "winston": "^2.2.0",
+    "winston-email": "0.0.11",
+    "winston-mongodb": "^1.4.0"
   },
-  "keywords": ["logging", "config", "winston", "json", "log"]
-
+  "keywords": [
+    "logging",
+    "config",
+    "winston",
+    "json",
+    "log"
+  ]
 }
