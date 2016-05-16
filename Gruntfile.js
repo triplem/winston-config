@@ -23,7 +23,7 @@ module.exports = function (grunt) {
       files: ['<%= jshint.files %>'],
       tasks: ['default']
     },
-    'mocha-hack': {
+    'mochaTest': {
       options: {
         globals: ['should'],
         timeout: 3000,
@@ -56,7 +56,7 @@ module.exports = function (grunt) {
       },
       all: ['test/*.js']
     },
-    exec: {
+    shell: {
       mkGenDocsDir: {
         command: 'mkdir -p docs/generated'
       }
@@ -73,12 +73,12 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-clean');
-  grunt.loadNpmTasks('grunt-mocha-hack');
+  grunt.loadNpmTasks('grunt-mocha-test');
   grunt.loadNpmTasks('grunt-mocha-cov');
-  grunt.loadNpmTasks('grunt-exec');
+  grunt.loadNpmTasks('grunt-shell');
 
   // Default task.
-  grunt.registerTask('default', ['jshint', 'mocha-hack']);
+  grunt.registerTask('default', ['jshint', 'mochaTest']);
 
   // Coverage tasks
   grunt.registerTask('coverage', ['clean', 'exec:mkGenDocsDir', 'mochacov:coverage']);
