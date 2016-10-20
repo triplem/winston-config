@@ -3,6 +3,7 @@
   "description": "A helper to easily configure winston",
   "version": "0.5.1",
   "homepage": "https://github.com/triplem/winston-config",
+  "license": "MIT",
   "author": {
     "name": "Markus M. May",
     "email": "mmay@javafreedom.org",
@@ -39,7 +40,7 @@
     }
   },
   "dependencies": {
-    "lodash.isempty": "^4.2.1"
+    "lodash.isempty": "^4.4.0"
   },
   "devDependencies": {
     "blanket": "^1.2.3",
